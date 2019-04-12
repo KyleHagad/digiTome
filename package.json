@@ -1,0 +1,19 @@
+{
+  "name": "storybooks",
+  "version": "1.0.0",
+  "description": "An app to write stories and share them if you so please.",
+  "main": "app.js",
+  "scripts": {
+    "start": "SET NODE_ENV=production & npx nodemon",
+    "dev": "SET NODE_ENV=development & npx nodemon %NODE_DEBUG_OPTION%"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.2",
+    "ip": "^1.1.5",
+    "mongoose": "^5.5.1",
+    "path": "^0.12.7"
+  }
+}
