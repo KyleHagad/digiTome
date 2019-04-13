@@ -9,6 +9,11 @@ const app = express();
 
 require('./config/passport')(passport); // passport configuration 
 
+const keys = require('./config/keys');
+
+mongoose.connect(keys.mongoURI, {useNewUrlParser: true}) // <v== connects to database
+  .then(() => console.log('DB Live...')).catch(err => console.log(err));
+
 const index = require('./routes/index'); // <v== loads routes
 const auth = require('./routes/auth');
 
