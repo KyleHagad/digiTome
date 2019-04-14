@@ -1,9 +1,10 @@
 const express = require('express');
 const path = require('path');
 const exphbs = require('express-handlebars'); // <== needs middleware, see below
-const mongoose = require('mongoose');
-const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const mongoose = require('mongoose');
+const MongoStore = require('connect-mongo')(session); // <== allows mongo access to sessions
+const cookieParser = require('cookie-parser');
 const passport = require('passport');
 const ip = require('ip');
 
@@ -27,16 +28,21 @@ app.set('view engine', 'handlebars');
 app.use(express.static(path.join(__dirname, 'public'))); // <== joins public dir for use 
 
 app.use(cookieParser());
-app.use(session({
+
+const sess = {
   secret: 'smellsOfRye',
+  name: 'biblioPteraSaur',
   resave: false,
-  saveUninitialized: false
-}));
+  saveUninitialized: false,
+  store: new MongoStore({ mongooseConnection: mongoose.connection, }), // <== Set Session store
+  cookie: { path: '/', httpOnly: true, secure: 'auto', maxAge: 60000 * 60 * 24 },
+};
+app.use(session(sess)); // <== uses session just created
 
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use((req, res, next) => {
+app.use((req, res, next) => { // <v== sets local user variable
   res.locals.user = req.user || null;
   next();
 });

@@ -4,3 +4,10 @@ to be fair these notes were started well into the guide
 
 ==> Index Routes & Handlebars
 
+==v Bugs
+  ==v Squashed
+    001}==> B{ login authentication route was not calling back to the '/dash'
+        ==> F{ the call back function targeted an incorrect URL
+    
+    002}==> B{ user not remaining logged in after google authorization
+        ==> F{ 

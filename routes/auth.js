@@ -4,12 +4,12 @@ const mongoose = require('mongoose');
 
 const router = express.Router();
 
-router.get('/google', passport.authenticate('google', {scope: ['profile', 'email']}));
+router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 router.get('/google/callback',
-  passport.authenticate('google', {failureRedirect: '/'}),
+  passport.authenticate('google', { failureRedirect: '/' }),
   (req, res) => { // v== successful login takes you to dashboard
-    res.redirect('/index/dash');
+    res.redirect('/dash');
   });
 
 router.get('/verify', (req, res) => {
@@ -18,12 +18,6 @@ router.get('/verify', (req, res) => {
   } else {
     console.log('no auth');
   }
-});
-// v== copied from index routes, probably not doing anything helpful here
-router.get('/dash', (req, res) => {
-  res.render('index/dash', {
-    pageLabel: 'Dash',
-  });
 });
 
 router.get('/logout', (req, res) => {
