@@ -1,0 +1,6 @@
+
+to be fair these notes were started well into the guide
+==^> Backend in the backend
+
+==> Index Routes & Handlebars
+

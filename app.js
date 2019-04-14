@@ -11,7 +11,7 @@ const app = express();
 
 require('./models/User'); // <== load models
 
-require('./config/passport')(passport); // passport configuration 
+require('./config/passport')(passport); // <== passport configuration 
 
 const keys = require('./config/keys');
 
@@ -21,14 +21,14 @@ mongoose.connect(keys.mongoURI, {useNewUrlParser: true}) // <v== connects to dat
 const index = require('./routes/index'); // <v== loads routes
 const auth = require('./routes/auth');
 
-app.engine('handlebars', exphbs({ defaultLayout: 'main', })); // <== handlebars middleware
+app.engine('handlebars', exphbs({ defaultLayout: 'main', })); // <v== handlebars middleware
 app.set('view engine', 'handlebars');
 
 app.use(express.static(path.join(__dirname, 'public'))); // <== joins public dir for use 
 
 app.use(cookieParser());
 app.use(session({
-  secret: 'secret',
+  secret: 'smellsOfRye',
   resave: false,
   saveUninitialized: false
 }));

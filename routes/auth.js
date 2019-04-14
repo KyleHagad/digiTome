@@ -9,7 +9,7 @@ router.get('/google', passport.authenticate('google', {scope: ['profile', 'email
 router.get('/google/callback',
   passport.authenticate('google', {failureRedirect: '/'}),
   (req, res) => { // v== successful login takes you to dashboard
-    res.redirect('/dashboard');
+    res.redirect('/index/dash');
   });
 
 router.get('/verify', (req, res) => {
@@ -18,6 +18,12 @@ router.get('/verify', (req, res) => {
   } else {
     console.log('no auth');
   }
+});
+
+router.get('/dash', (req, res) => {
+  res.render('index/dash', {
+    pageLabel: 'Dash',
+  });
 });
 
 router.get('/logout', (req, res) => {
