@@ -19,7 +19,7 @@ router.get('/verify', (req, res) => {
     console.log('no auth');
   }
 });
-
+// v== copied from index routes, probably not doing anything helpful here
 router.get('/dash', (req, res) => {
   res.render('index/dash', {
     pageLabel: 'Dash',
