@@ -2,10 +2,14 @@ const express = require('express');
 const path = require('path');
 const exphbs = require('express-handlebars'); // <== needs middleware, see below
 const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
 const passport = require('passport');
 const ip = require('ip');
 
 const app = express();
+
+require('./models/User'); // <== load models
 
 require('./config/passport')(passport); // passport configuration 
 
@@ -21,6 +25,21 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main', })); // <== handlebars 
 app.set('view engine', 'handlebars');
 
 app.use(express.static(path.join(__dirname, 'public'))); // <== joins public dir for use 
+
+app.use(cookieParser());
+app.use(session({
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use((req, res, next) => {
+  res.locals.user = req.user || null;
+  next();
+});
 
 app.use('/', index); // <v== uses routes
 app.use('/auth', auth);

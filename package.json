@@ -1,5 +1,5 @@
 {
-  "name": "storybooks",
+  "name": "phossilrecord",
   "version": "1.0.0",
   "description": "An app to write stories and share them if you so please.",
   "main": "app.js",
@@ -10,8 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cookie-parser": "^1.4.4",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.2",
+    "express-session": "^1.16.1",
     "ip": "^1.1.5",
     "mongoose": "^5.5.1",
     "passport": "^0.4.0",
