@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-// ^v== Mongoose's Schema dependencies
+const mongoose = require('mongoose'); // <== Mongoose's Schema dependencies
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
@@ -22,4 +21,4 @@ const UserSchema = new Schema({
   }
 });
 
-mongoose.model('users', UserSchema);
+mongoose.model('user', UserSchema);
