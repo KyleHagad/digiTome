@@ -3,7 +3,7 @@
     <div class="nav-wrapper">
 
       <a href="#" data-target="main-menu" class="sidenav-trigger show-on-large"><i class="fas fa-bars"></i></a>
-      <a href="/stories" class="brand-logo center">PhossilRecord</a>
+      <a href="/" class="brand-logo center">PhossilRecord</a>
 
       <!-- right-hand nav -->
       <ul class="right hide-on-small-only">
@@ -11,7 +11,7 @@
           <li><a href="/dash">Welcome, {{user.firstName}}.</a></li>
           <li><a href="/auth/logout">Until next time. <i class="fas fa-door-open"></i></a></li>
         {{else}}
-          <a href="/stories">Public record <i class="fas fa-scroll"></i></a>
+          <a href="/stories/index">Public record <i class="fas fa-scroll"></i></a>
         {{/if}}
       </ul>
 

@@ -18,4 +18,10 @@ router.get('/dash', (req, res) => {
   });
 });
 
+router.get('/about', (req, res) =>{
+  res.render('index/about', {
+    pageLabel: 'Index',
+  });
+});
+
 module.exports = router;

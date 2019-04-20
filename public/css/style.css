@@ -29,6 +29,12 @@ nav .brand-logo {
   padding: 0;
 }
 
-fas.fa-bone.logo {
-  font-size: .5rem;
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
 }
