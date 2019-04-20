@@ -9,9 +9,9 @@
       <ul class="right hide-on-small-only">
         {{#if user}}
           <li><a href="/dash">Welcome, {{user.firstName}}.</a></li>
-          <li><a href="/auth/logout">Until next time. <i class="fas fa-door-open"></i></a></li>
+          <li><a href="/auth/logout">Until next time. <i class="fas fa-door-open fa-sm"></i></a></li>
         {{else}}
-          <a href="/stories/index">Public record <i class="fas fa-scroll"></i></a>
+          <a href="/stories/index">Public record <i class="fas fa-scroll fa-sm"></i></a>
         {{/if}}
       </ul>
 
@@ -23,7 +23,7 @@
           <li><a href="/auth/google" class="btn green darken-1"><i class="fab fa-google left"></i> Google Login</a></li>
         {{/if}}
 
-          <li><a href='/stories'><i class="fas fa-chalkboard fa-fw"></i> Public Record</a></li>
+          <li><a href='/stories/index'><i class="fas fa-chalkboard fa-fw"></i> Public Record</a></li>
 
         {{#if user}}
           <li class="divider"></li>

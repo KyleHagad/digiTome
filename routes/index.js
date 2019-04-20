@@ -6,13 +6,15 @@ const router = express.Router();
 
 const User = mongoose.model('user');
 
+const {ensureAuthenticated} = require('../helpers/auth');
+
 router.get('/', (req, res) => {
   res.render('index/welcome', {
     pageLabel: 'Welcome',
   });
 });
 
-router.get('/dash', (req, res) => {
+router.get('/dash', ensureAuthenticated, (req, res) => {
   res.render('index/dash', {
     pageLabel: 'Dash',
   });
