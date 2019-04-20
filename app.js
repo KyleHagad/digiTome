@@ -10,17 +10,18 @@ const ip = require('ip');
 
 const app = express();
 
-require('./models/User'); // <== load models
+require('./models/User'); // <=< load models
 
-require('./config/passport')(passport); // <== passport configuration 
+require('./config/passport')(passport); // <=< passport configuration 
 
 const keys = require('./config/keys');
 
-mongoose.connect(keys.mongoURI, {useNewUrlParser: true}) // <v== connects to database
+mongoose.connect(keys.mongoURI, {useNewUrlParser: true}) // <=<v connects to database
   .then(() => console.log('DB Live...')).catch(err => console.log(err));
 
 const index = require('./routes/index'); // <v== loads routes
 const auth = require('./routes/auth');
+const stories = require('./routes/stories');
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main', })); // <v== handlebars middleware
 app.set('view engine', 'handlebars');
@@ -42,13 +43,14 @@ app.use(session(sess)); // <== uses session just created
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use((req, res, next) => { // <v== sets local user variable
+app.use((req, res, next) => { // <=< sets local user variable
   res.locals.user = req.user || null;
   next();
 });
 
-app.use('/', index); // <v== uses routes
+app.use('/', index); // <=< uses routes
 app.use('/auth', auth);
+app.use('/stories', stories);
 
 const port = process.env.PORT || 5000; // <== chooses active port for app
 

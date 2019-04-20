@@ -20,3 +20,15 @@ nav {
   left: 42%;
   transform: translateX(-50%);
 }
+
+nav .brand-logo {
+  position: initial;
+  color: #fff;
+  display: inline;
+  font-size: 2.1rem;
+  padding: 0;
+}
+
+fas.fa-bone.logo {
+  font-size: .5rem;
+}

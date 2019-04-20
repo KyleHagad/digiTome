@@ -1,8 +1,12 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container bg-light psa">
-    <h1 class="display-4">Phossil Record</h1>
+    <h1 class="display-4">PhossilRecord</h1>
     <p class="lead">Welcome to the Phossil Record</p>
-    <p>Here you can discover and artifacts and contribute to the growing collection</p>
-    <a href="/auth/google" class="btn green darken-1"><i class="fa fa-google left"></i> Start here with Google.</a>
+    <p>Here you can discover and contribute artifacts to the growing collection</p>
+    
+    {{#if user}}
+    {{else}}
+      <a href="/auth/google" class="btn green darken-1"><i class="fab fa-google left"></i> Start here with Google.</a>
+    {{/if}}
   </div>
 </div>
