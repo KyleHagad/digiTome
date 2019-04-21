@@ -6,6 +6,8 @@ const router = express.Router();
 
 const User = mongoose.model('user');
 
+const { ensureAuthenticated } = require('../helpers/auth');
+
 router.get('/index', (req, res) =>{
   res.render('stories/index', {
     pageLabel: 'Records index',
