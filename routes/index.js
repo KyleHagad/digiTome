@@ -1,26 +1,26 @@
 const express = require('express');
-const passport = require('passport');
+const passport = require('passport'); // <=< not sure if either passport or mongoose in actually necessary here
 const mongoose = require('mongoose');
 
 const router = express.Router();
 
-const User = mongoose.model('user');
+const User = mongoose.model('user'); // <=< ditto the above regarding mongoose
 
-const {ensureAuthenticated} = require('../helpers/auth');
+const { ensureAuthenticated, ensureGuest } = require('../helpers/auth'); // <=< destructuring brings in both helper functions
 
-router.get('/', (req, res) => {
+router.get('/', ensureGuest, (req, res) => { // <=< to Welcome page
   res.render('index/welcome', {
     pageLabel: 'Welcome',
   });
 });
 
-router.get('/dash', ensureAuthenticated, (req, res) => {
+router.get('/dash', ensureAuthenticated, (req, res) => { // <=< to Dash
   res.render('index/dash', {
     pageLabel: 'Dash',
   });
 });
 
-router.get('/about', (req, res) =>{
+router.get('/about', (req, res) =>{ // <=< to About
   res.render('index/about', {
     pageLabel: 'Index',
   });

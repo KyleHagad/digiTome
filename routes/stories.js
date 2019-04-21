@@ -12,7 +12,7 @@ router.get('/index', (req, res) =>{
   });
 });
 
-router.get('/create', (req, res) =>{
+router.get('/create', ensureAuthenticated,(req, res) => {
   res.render('stories/create', {
     pageLabel: 'Create Record',
   });
@@ -24,7 +24,7 @@ router.get('/read', (req, res) =>{
   });
 });
 
-router.get('/update', (req,res) =>{
+router.get('/update', ensureAuthenticated, (req, res) => {
   res.render('stories/update', {
     pageLabel: 'Update Record',
   });

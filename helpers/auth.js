@@ -4,5 +4,13 @@ module.exports = {
       return next();
     }
     res.redirect('/');
+  },
+
+  ensureGuest: (req, res, next) => {
+    if (req.isAuthenticated()) {
+      res.redirect('/dash');
+    } else {
+      return next();
+    }
   }
 }

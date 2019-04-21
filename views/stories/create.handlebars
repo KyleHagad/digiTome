@@ -1,1 +1,44 @@
-<h1>Create new record.</h1>
+<h1>Create new record.</h1> 
+
+<div class="row"> <!-- 'Create' form -->
+  <form action="/stories" method="POST" class="col s12">
+
+    <div class="row"> <!-- Title of record -->
+      <div class="input-field">
+        <input type="text" name="title">
+        <label for="title">Title</label>
+      </div>
+    </div>
+
+    <div class="row"> <!-- Viewability selector -->
+      <div class="input-field">
+        <select>
+          <option value="" disabled selected>Choose Publishing Status</option>
+          <option value="draft">Unpublished Draft</option>
+          <option value="private">Private Record</option>
+          <option value="public">Public Record</option>
+        </select>
+        <label>Publishing Status</label>
+      </div>
+    </div>
+
+    <div class="row"> <!-- Commentability selector -->
+      <p>
+        <label>
+          <input type="checkbox" class="filled-in" checked="checked" />
+          <span>Select to Allow Commentary</span>
+        </label>
+      </p>
+    </div>
+
+    <div class="row">
+      <div class="input-field">
+        <h5>Tell us something:</h5>
+        <textarea name="body"></textarea>
+      </div>
+    </div>
+
+    <input type="submit" value="save" class="btn">
+
+  </form>
+</div>
