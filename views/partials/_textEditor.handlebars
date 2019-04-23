@@ -1,0 +1,12 @@
+<!-- CKEditor 5 classic editor -->
+<textarea name="content" id="editor">
+  &lt;p&gt;This is some sample content.&lt;/p&gt;
+</textarea>
+
+<script>
+  ClassicEditor
+    .create(document.querySelector('#editor'))
+    .catch(error => {
+      console.error(error);
+    });
+</script>
