@@ -68,7 +68,7 @@ router.post('/', ensureAuthenticated, (req, res) => { // <=< Create Story proces
     new Story(newStory) // <=< saves the story object
     .save()
     .then(story => {
-      res.redirect(`/stories/show/${story.id}`);
+      res.redirect(`/stories/read/${story.id}`);
     });
 });
 

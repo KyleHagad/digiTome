@@ -38,3 +38,15 @@ body {
 main {
   flex: 1 0 auto;
 }
+
+.story-text {
+  height: 6rem;
+}
+
+.dash-status {
+  text-transform: capitalize;
+}
+
+#delete-form {
+  display: inline;
+}
