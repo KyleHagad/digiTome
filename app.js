@@ -18,9 +18,14 @@ app.use(bodyParser.json());
 require('./models/User'); // <=<|2 load models
 require('./models/Story');
 
-require('./config/passport')(passport); // <=< passport configuration 
-
+require('./config/passport')(passport); // <=<|2 config for passport and keys
 const keys = require('./config/keys');
+
+const {
+  truncate, 
+  stripTags,
+  formatDate
+} = require('./helpers/hbs'); // <=< handlebars helpers
 
 mongoose.connect(keys.mongoURI, {useNewUrlParser: true}) // <=<|2 connects to database
   .then(() => console.log('DB Live...')).catch(err => console.log(err));
@@ -29,7 +34,14 @@ const index = require('./routes/index'); // <=< loads routes
 const auth = require('./routes/auth');
 const stories = require('./routes/stories');
 
-app.engine('handlebars', exphbs({ defaultLayout: 'main', })); // <=<|2 handlebars middleware
+app.engine('handlebars', exphbs({ // <=<8| handlebars middleware. Brings in helpers and sets view engine
+  helpers: {
+    truncate: truncate,
+    stripTags: stripTags,
+    formatDate: formatDate
+  },
+  defaultLayout: 'main'
+}));
 app.set('view engine', 'handlebars');
 
 app.use(express.static(path.join(__dirname, 'public'))); // <=< joins public dir for use 

@@ -20,7 +20,17 @@ router.get('/index', (req, res) =>{
     });
 });
 
-router.get('/create', ensureAuthenticated,(req, res) => {
+router.get('/read/:id', (req, res) => { // <=< Read individual story
+  Story.findOne({ _id: req.params.id })
+  .populate('user')
+  .then(story => {
+    res.render('stories/read', {
+    story: story
+    });
+  });
+});
+
+router.get('/create', ensureAuthenticated,(req, res) => { // <=< Get to Create stories form
   res.render('stories/create', {
     pageLabel: 'Create Record',
   });
@@ -38,8 +48,7 @@ router.get('/update', ensureAuthenticated, (req, res) => {
   });
 });
 
-// add story
-router.post('/', ensureAuthenticated, (req, res) => {
+router.post('/', ensureAuthenticated, (req, res) => { // <=< Create Story process
   let allowComments;
 
   if(req.body.allowComments){
@@ -48,7 +57,7 @@ router.post('/', ensureAuthenticated, (req, res) => {
     allowComments = false;
   }
 
-  const newStory = {
+  const newStory = { // <=< builds new story object
     title: req.body.title,
     body: req.body.body,
     status: req.body.status,
@@ -56,8 +65,7 @@ router.post('/', ensureAuthenticated, (req, res) => {
     user: req.user.id
   }
 
-  // create story
-  new Story(newStory)
+    new Story(newStory) // <=< saves the story object
     .save()
     .then(story => {
       res.redirect(`/stories/show/${story.id}`);

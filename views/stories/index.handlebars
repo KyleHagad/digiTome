@@ -7,19 +7,19 @@
           <a href="/stories/edit/{{id}}" class="btn-floating halfway-fab red"><i class="fas fa-pen"></i></a>
         </div>
         <div class="card-content center-align">
-          <h5>{{{title}}}</h5>
-          <p class="story-text">{{{body}}}</p>
+          <h5>{{title}}</h5>
+          <p class="story-text">{{stripTags (truncate body 72)}}</p>
           
           <br>
 
           <div class="chip">
-            <img src={{{user.image}}}>
+            <img src="{{user.image}}">
             {{user.firstName}} {{user.lastName}}
           </div>
         
         </div>
         <div class="card-action center-align">
-          <div class="btn grey darken-1" href="/stories/show/{{id}}">Read More</div>
+          <a class="btn grey darken-1" href="/stories/read/{{id}}">Read More</a>
         </div>
       </div>
     </div>
