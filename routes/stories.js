@@ -36,6 +36,18 @@ router.get('/create', ensureAuthenticated,(req, res) => { // <=< Get to Create s
   });
 });
 
+router.get('/update/:id', ensureAuthenticated, (req, res) => { // <=< Get to Update stories form
+  Story.findOne({
+      _id: req.params.id
+    })
+    .then(story => {
+      res.render('stories/update', {
+        pageLabel: 'Update Record',
+      });
+    });
+  
+});
+
 router.get('/read', (req, res) =>{
   res.render('stories/read', {
     pageLabel: 'Read Record',
