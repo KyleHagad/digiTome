@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const exphbs = require('express-handlebars'); // <=< needs middleware, see below
 const session = require('express-session');
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo')(session); // <=< allows mongo access to sessions
 const cookieParser = require('cookie-parser');
@@ -10,7 +11,12 @@ const ip = require('ip');
 
 const app = express();
 
-require('./models/User'); // <=< load models
+app.use(bodyParser.urlencoded({ extended: false })); // <=<|2 bodyParser middleware
+app.use(bodyParser.json());
+
+
+require('./models/User'); // <=<|2 load models
+require('./models/Story');
 
 require('./config/passport')(passport); // <=< passport configuration 
 

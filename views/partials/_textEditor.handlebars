@@ -1,11 +1,10 @@
 <!-- CKEditor 5 classic editor -->
-<textarea name="content" id="editor">
-  &lt;p&gt;This is some sample content.&lt;/p&gt;
-</textarea>
+<textarea name="body" id="body"></textarea>
+<label for="body">Your words</label>
 
 <script>
   ClassicEditor
-    .create(document.querySelector('#editor'))
+    .create(document.querySelector('#body'))
     .catch(error => {
       console.error(error);
     });

@@ -5,35 +5,34 @@
 
     <div class="row"> <!-- Title of record -->
       <div class="input-field">
-        <input type="text" name="title">
+        <input type="text" name="title" id="title">
         <label for="title">Title</label>
       </div>
     </div>
 
     <div class="row"> <!-- Viewability selector -->
       <div class="input-field">
-        <select>
+        <select name="status" id="status">
           <option value="" disabled selected>Choose Publishing Status</option>
           <option value="draft">Unpublished Draft</option>
           <option value="private">Private Record</option>
           <option value="public">Public Record</option>
         </select>
-        <label>Publishing Status</label>
+        <label for="status">Publishing Status</label>
       </div>
     </div>
 
     <div class="row"> <!-- Commentability selector -->
       <p>
         <label>
-          <input type="checkbox" class="filled-in" checked="checked" />
+          <input type="checkbox" class="filled-in" checked="checked" name="allowComments" id="allowComments" />
           <span>Select to Allow Commentary</span>
-        </label>
+        </label for="allowComments">
       </p>
     </div>
 
     <div class="row">
       <div class="input-field">
-        <h5>Tell us something:</h5>
         {{> _textEditor}}
       </div>
     </div>
