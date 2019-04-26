@@ -30,22 +30,20 @@ router.get('/read/:id', (req, res) => { // <=< Read individual story
   });
 });
 
-router.get('/create', ensureAuthenticated,(req, res) => { // <=< Get to Create stories form
+router.get('/create', ensureAuthenticated, (req, res) => { // <=< Get to Create stories form
   res.render('stories/create', {
-    pageLabel: 'Create Record',
+    pageLabel: 'Create Record'
   });
 });
 
 router.get('/update/:id', ensureAuthenticated, (req, res) => { // <=< Get to Update stories form
-  Story.findOne({
-      _id: req.params.id
-    })
+  Story.findOne({ _id: req.params.id })
     .then(story => {
       res.render('stories/update', {
         pageLabel: 'Update Record',
+        story: story
       });
     });
-  
 });
 
 router.get('/read', (req, res) =>{
