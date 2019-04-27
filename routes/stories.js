@@ -35,6 +35,30 @@ router.get('/read/:id', (req, res) => {
   });
 });
 
+// >>=READ stories from a particular user=<<
+router.get('/user/:userId', (req, res) => {
+  Story.find({ user: req.params.userId, status: 'public' })
+  .populate('user')
+  .then(stories => {
+    res.render('stories/index', {
+      stories: stories,
+      pageLabel: 'Individual Index'
+    });
+  })
+});
+
+// >>=Logged in user's stories=<<
+router.get('/my', ensureAuthenticated, (req, res) => {
+  Story.find({ user: req.user.id })
+  .populate('user')
+  .then(stories => {
+    res.render('stories/index', {
+      stories: stories,
+      pageLabel: 'Your Personal Index'
+    });
+  })
+});
+
 // >>=Get to Create stories form=<<
 router.get('/create', ensureAuthenticated, (req, res) => {
   res.render('stories/create', {

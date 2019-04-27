@@ -35,8 +35,10 @@
         <div class="card-content">
           <h6>{{commentBody}}</h6>
           <div class="chip">
-            <img src="{{commentUser.image}}">
-            {{commentUser.firstName}} {{commentUser.lastName}}
+            <a href="/stories/user/{{commentUser.id}}">
+              <img src="{{commentUser.image}}">
+              {{commentUser.firstName}} {{commentUser.lastName}}
+            </a>
           </div>
           <br>
           <small>Circa: {{formatDate commentDate 'MMMM YYYY'}}</small>
