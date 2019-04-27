@@ -28,22 +28,24 @@ const {
   truncate, 
   stripTags,
   formatDate,
-  select
+  select,
+  editIcon
 } = require('./helpers/hbs'); // <=< handlebars helpers
 
 mongoose.connect(keys.mongoURI, {useNewUrlParser: true}) // <=<|2 connects to database
   .then(() => console.log('DB Live...')).catch(err => console.log(err));
 
-const index = require('./routes/index'); // <=< loads routes
+const index = require('./routes/index'); // <=<|3 loads routes
 const auth = require('./routes/auth');
 const stories = require('./routes/stories');
 
-app.engine('handlebars', exphbs({ // <=<8| handlebars middleware. Brings in helpers and sets view engine
+app.engine('handlebars', exphbs({ // <=<9| handlebars middleware. Brings in helpers and sets view engine
   helpers: {
     truncate: truncate,
     stripTags: stripTags,
     formatDate: formatDate,
-    select: select
+    select: select,
+    editIcon: editIcon
   },
   defaultLayout: 'main'
 }));

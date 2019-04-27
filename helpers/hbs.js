@@ -25,6 +25,18 @@ module.exports = {
     return options.fn(this)
     .replace( new RegExp(' value=\"'+ selected + '\"'), '$& selected="selected"')
     .replace( new RegExp('>' + selected + '</option>'), 'selected="selected"$&')
+  },
+
+  editIcon: (storyUser, loggedUser, storyId, floating = true) => {
+    if(storyUser === loggedUser) {
+      if(floating) {
+        return `<a href="/stories/update/${storyId}" class="btn-floating halfway-fab red"><i class="fas fa-pen"></i></a>`;
+      } else {
+        return `<a href="/stories/update/${storyId}"><i class="fas fa-pen"></i></a>`;
+      }
+    } else {
+      return '';
+    }
   }
 
 }
