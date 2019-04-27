@@ -3,6 +3,7 @@ const path = require('path');
 const exphbs = require('express-handlebars'); // <=< needs middleware, see below
 const session = require('express-session');
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo')(session); // <=< allows mongo access to sessions
 const cookieParser = require('cookie-parser');
@@ -13,6 +14,8 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false })); // <=<|2 bodyParser middleware
 app.use(bodyParser.json());
+
+app.use(methodOverride('_method')); //<=< methodOverride middleware
 
 
 require('./models/User'); // <=<|2 load models

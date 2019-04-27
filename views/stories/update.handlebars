@@ -2,8 +2,8 @@
 
 <div class="row">
   <!-- 'Create' form -->
-  <form action="/stories" method="POST" class="col s12">
-
+  <form action="/stories/{{story.id}}?_method=PUT" method="POST" class="col s12">
+    <input type="hidden" name="_method" value="PUT">
     <div class="row">
       <!-- Title of record -->
       <div class="input-field">
@@ -30,7 +30,7 @@
       <!-- Commentability selector -->
       <p>
         <label>
-          <input type="checkbox" class="filled-in" checked="checked" name="allowComments" id="allowComments" />
+          <input type="checkbox" class="filled-in" {{#if story.allowComments}}checked="checked"{{/if}} name="allowComments" id="allowComments" />
           <span>Select to Allow Commentary</span>
         </label for="allowComments">
       </p>
