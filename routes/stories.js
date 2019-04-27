@@ -28,10 +28,23 @@ router.get('/read/:id', (req, res) => {
   .populate('user')
   .populate('comments.commentUser')
   .then(story => {
-    res.render('stories/read', {
-    story: story,
-    pageLabel: 'Read Record'
-    });
+    if(story.status === 'public') {
+      res.render('stories/read', {
+        story: story
+      });
+    } else {
+      if(req.user) {
+        if(req.user.id === story.user._id) {
+          res.render('stories/read', {
+            story: story
+          });
+        } else {
+          res.redirect('/stories');
+        }
+      } else {
+        res.redirect('/stories');
+      }
+    }
   });
 });
 
