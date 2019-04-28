@@ -23,13 +23,14 @@
           <li><a href="/auth/google" class="btn green darken-1"><i class="fab fa-google left"></i> Google Login</a></li>
         {{/if}}
 
-          <li><a href='/stories/index'><i class="fas fa-chalkboard fa-fw"></i> Public Record</a></li>
+          <li><a href='/stories/index'><i class="fas fa-chalkboard-teacher fa-fw"></i> Public Record</a></li>
 
         {{#if user}}
           <li class="divider"></li>
+          <li><a href='/stories/create'><i class="fas fa-pen-fancy fa-fw"></i> Create a New Record</a></li>
+          <li><a href='/stories/my'><i class="fas fa-book fa-fw"></i> Personal Record</a></li>
           <li><a href='/dash'><i class="fas fa-id-card fa-fw"></i> Dashboard</a></li>
-          <li><a href='/stories/my'><i class="fas fa-chalkboard-teacher fa-fw"></i> Personal Record</a></li>
-          <li><a href='/auth/logout'><i class="fas fa-door-open fa-fw"></i> Ta-ta for now!</a></li>
+          <li><a href='/auth/logout'><i class="fas fa-ghost fa-fw"></i> Ta-ta for now!</a></li>
         {{/if}}
       </ul>
 
