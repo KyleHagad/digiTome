@@ -115,7 +115,7 @@ router.post('/', ensureAuthenticated, (req, res) => {
     new Story(newStory) // <=< saves the story object
     .save()
     .then(story => {
-      res.redirect(`/stories/read/${story.id}`);
+      res.redirect(`stories/read/${story.id}`);
     });
 });
 
